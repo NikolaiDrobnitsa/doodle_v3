@@ -11,12 +11,15 @@ private:
 	vector<Pos> vecPlat;
 	Sprite* imgPlat;
 	Texture platform_texture;
+	
 	int imgWidth;
+
 public:
+	
 	C_Platform()
 	{
 		srand(static_cast<unsigned int>(time(nullptr)));
-
+		
 		platform_texture.loadFromFile("platform.png");
 		imgPlat = new Sprite(platform_texture);
 
@@ -30,7 +33,7 @@ public:
 			vecPlat.push_back(p);
 		}
 
-		vecPlat[0].y = HEIGHT - 200;
+		vecPlat[0].y = HEIGHT - 100;
 	}
 	~C_Platform()
 	{
@@ -47,7 +50,7 @@ public:
 	}
 	bool CheckCollision(C_Doodle* doodle)
 	{
-		//null check.
+	
 		if (doodle == nullptr)
 		{
 			return false;
@@ -59,8 +62,9 @@ public:
 				&& doodle->GetX() + doodle->GetWidth() > vecPlat[i].x
 				&& doodle->GetX() < vecPlat[i].x + imgWidth
 				&& doodle->GetY() + doodle->GetHeight() > vecPlat[i].y
-				&& doodle->GetY() + doodle->GetHeight() < vecPlat[i].y + 10)
+				&& doodle->GetY() + doodle->GetHeight() < vecPlat[i].y + 15)
 			{
+
 				doodle->Jump();
 				return true;
 			}

@@ -12,7 +12,10 @@ private:
 	Sprite* imgReady;
 	Texture doodle_texture;
 	Texture t2;
+	
+	IntRect IntRect;
 	bool jumpFlag;
+	int score = 0;
 private:
 	const Sprite& GetImg()
 	{
@@ -32,21 +35,18 @@ public:
 		x = static_cast<int>(WIDTH / 2);
 		y = static_cast<int>(HEIGHT / 2);
 
+		
 		doodle_texture.loadFromFile("doodle.png");
 		t2.loadFromFile("fire_doodle.png");
-
 		imgJump = new Sprite(doodle_texture);
 		imgReady = new Sprite(t2);
 
 		imgWidth = static_cast<int>(imgReady->getTexture()->getSize().x);
 		imgHeight = static_cast<int>(imgReady->getTexture()->getSize().y);
+		
 	}
-	~C_Doodle()
-	{
-		delete(imgJump);
-		delete(imgReady);
-	}
-
+	
+	
 	void SetPosition()
 	{
 		imgReady->setPosition(x, y);
@@ -79,6 +79,7 @@ public:
 		{
 			jumpFlag = false;
 			dy = -10;
+
 		}
 
 	}
@@ -114,6 +115,12 @@ public:
 	void Jump()
 	{
 		jumpFlag = false;
-		dy = -10;
+		dy = -15;
+	}
+
+	~C_Doodle()
+	{
+		delete(imgJump);
+		delete(imgReady);
 	}
 };
