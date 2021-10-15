@@ -11,16 +11,15 @@ private:
 	Sprite* imgJump;
 	Sprite* imgReady;
 	Texture doodle_texture;
-	Texture t2;
+	Texture fire_doodle;
 	
 	IntRect IntRect;
 	bool jumpFlag;
-	int score = 0;
 private:
 	const Sprite& GetImg()
 	{
-		if (jumpFlag)
-		{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false) {
+
 			return *imgJump;
 		}
 		else
@@ -37,9 +36,9 @@ public:
 
 		
 		doodle_texture.loadFromFile("doodle.png");
-		t2.loadFromFile("fire_doodle.png");
+		fire_doodle.loadFromFile("fire_doodle.png");
 		imgJump = new Sprite(doodle_texture);
-		imgReady = new Sprite(t2);
+		imgReady = new Sprite(fire_doodle);
 
 		imgWidth = static_cast<int>(imgReady->getTexture()->getSize().x);
 		imgHeight = static_cast<int>(imgReady->getTexture()->getSize().y);
@@ -83,6 +82,7 @@ public:
 		}
 
 	}
+
 	void Draw(RenderWindow& window)
 	{
 		window.draw(GetImg());
@@ -114,10 +114,10 @@ public:
 	}
 	void Jump()
 	{
-		jumpFlag = false;
+		//jumpFlag = false;
 		dy = -15;
 	}
-
+	
 	~C_Doodle()
 	{
 		delete(imgJump);

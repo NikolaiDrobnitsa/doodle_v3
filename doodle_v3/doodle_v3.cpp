@@ -9,7 +9,7 @@ int main(void)
 	window.setFramerateLimit(60);
 	//int score = 1;
 	//setting
-	
+	int num = 0;
 	C_Doodle* doodle = new C_Doodle();
 	C_Platform* Platform = new C_Platform();
 	C_MainWindow* background = new C_MainWindow();
@@ -26,9 +26,9 @@ int main(void)
 			}
 			
 		}
+		Score->Draws(window);
 
 		background->Draw(window);
-		
 		//logic
 		doodle->Move();
 			

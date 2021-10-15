@@ -1,3 +1,4 @@
+
 #pragma once
 #include "C_Doodle.h"
 class C_Platform
@@ -16,6 +17,7 @@ private:
 
 public:
 	
+	int Testscore = 0;
 	C_Platform()
 	{
 		srand(static_cast<unsigned int>(time(nullptr)));
@@ -66,10 +68,19 @@ public:
 			{
 
 				doodle->Jump();
+				this->Testscore++;
+				cout << this->Testscore;
+				//scors = Testscore;
+				//cout << scors;
+				
 				return true;
 			}
 		}
 		return false;
+	}
+	int GetScore()
+	{
+		return this->Testscore;
 	}
 	void MoveAndReset(C_Doodle* doodle)
 	{
